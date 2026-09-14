@@ -4,6 +4,30 @@
 -->
 # Deck
 
+> **Pandalytics fork.** Branched from upstream `v1.18.3`, the version running on
+> cloud2. It carries one change against upstream, tracked in
+> [pandalytics/devop#2](https://github.com/pandalytics/devop/issues/2):
+>
+> - `src/CardMoveDialog.vue` — "Move card" is the primary action of the
+>   move/copy dialog and sits rightmost; "Copy card" is secondary. Upstream has
+>   it the other way round, which offers copying to anyone who wanted to move a
+>   card. Upstream `main` still does, so an app update will not bring this.
+>
+> ### Rebuilding after an upstream merge
+>
+> The app ships a webpack bundle and `js/` is gitignored, so the fork has to be
+> built before it can be deployed:
+>
+> ```
+> npm ci
+> npm run build
+> ```
+>
+> Deployment replaces `custom_apps/deck/js/` in the Nextcloud container with the
+> build output. The PHP side is untouched, so the app-store `vendor/` directory
+> stays as-is. **An app-store update of Deck overwrites this patch** — rebuild
+> from the matching upstream tag and redeploy afterwards.
+
 [![CodeCov](https://codecov.io/github/nextcloud/deck/coverage.svg?branch=main)](https://codecov.io/github/nextcloud/deck) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/nextcloud/deck/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/nextcloud/deck/?branch=main) [![#nextcloud-deck](https://img.shields.io/badge/IRC-%23nextcloud--deck%20on%20freenode-blue.svg)](https://webchat.freenode.net/?channels=nextcloud-deck) [![REUSE status](https://api.reuse.software/badge/github.com/nextcloud/deck)](https://api.reuse.software/info/github.com/nextcloud/deck)
 
 
