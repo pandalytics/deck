@@ -22,11 +22,12 @@
 				label="title" />
 		</div>
 		<template #actions>
-			<NcButton :disabled="!isBoardAndStackChoosen" type="secondary" @click="moveCard">
-				{{ t('deck', 'Move card') }}
-			</NcButton>
-			<NcButton :disabled="!isBoardAndStackChoosen" type="primary" @click="cloneCard">
+			<!-- Move is the primary action, copy the exception -->
+			<NcButton :disabled="!isBoardAndStackChoosen" type="secondary" @click="cloneCard">
 				{{ t('deck', 'Copy card') }}
+			</NcButton>
+			<NcButton :disabled="!isBoardAndStackChoosen" type="primary" @click="moveCard">
+				{{ t('deck', 'Move card') }}
 			</NcButton>
 		</template>
 	</NcDialog>
